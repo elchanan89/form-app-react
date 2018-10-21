@@ -34,7 +34,8 @@ class Form extends Component {
         this.checkValidation();
 
         if (this.formData.isValid) {
-            serviceWorker.sendEmail(this.formData.fieldsValue);
+            var apiKey = window.prompt("Please insert your api Key (for: sendgrid emali service)");
+            serviceWorker.sendEmail(this.formData.fieldsValue, apiKey);
             alert("The email was sent successfully");
         }
 
@@ -45,7 +46,7 @@ class Form extends Component {
         this.formData.isValid = isValid;
 
         this.setState({
-            errorMessage: msg,
+            errorMessage: msg, 
             errorField: errorField
         });
     }

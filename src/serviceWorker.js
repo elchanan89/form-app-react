@@ -133,17 +133,17 @@ export function unregister() {
 // SendGrid API service
 const sgMail = require('@sendgrid/mail');
 
-export function sendEmail(data) {
-  sgMail.setApiKey('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');
+export function sendEmail(data, ApiKey) {
+  sgMail.setApiKey(ApiKey);
   const msg = {
     to: data['Mail Address'],
     from: 'test@example.com',
     subject: 'New Lead',
-    html: 'First Name: ' + data['First Name'] + '<br>' + 
-      'Last Name: ' + data['Last Name'] + '<br>' + 
-      'Mail Address: ' + data['Mail Address'] + '<br>' + 
+    html: 'First Name: ' + data['First Name'] + '<br>' +
+      'Last Name: ' + data['Last Name'] + '<br>' +
+      'Mail Address: ' + data['Mail Address'] + '<br>' +
       'Phone Number: ' + data['Phone Number']
-  }; 
-  
+  };
+
   sgMail.send(msg);
 }
