@@ -145,5 +145,5 @@ export function sendEmail(data, ApiKey) {
       'Phone Number: ' + data['Phone Number']
   };
 
-  sgMail.send(msg);
+  return sgMail.send(msg);
 }

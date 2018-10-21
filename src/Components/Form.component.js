@@ -16,7 +16,7 @@ class Form extends Component {
             errorMessage: '',
             errorField: ''
         }
-  
+
         this.formData.fieldsName.map(fieldName => {
             this.formData.fieldsValue[fieldName] = '';
         });
@@ -35,8 +35,12 @@ class Form extends Component {
 
         if (this.formData.isValid) {
             var apiKey = window.prompt("Please insert your api Key (for: sendgrid emali service)");
-            serviceWorker.sendEmail(this.formData.fieldsValue, apiKey);
-            alert("The email was sent successfully");
+
+            serviceWorker.sendEmail(this.formData.fieldsValue, apiKey).then(() => {
+                alert("The email was sent successfully");
+            }).catch(error => {
+                alert("ERROR " + error.code + ": " + error.message);
+            });
         }
 
         event.preventDefault();
@@ -46,7 +50,7 @@ class Form extends Component {
         this.formData.isValid = isValid;
 
         this.setState({
-            errorMessage: msg, 
+            errorMessage: msg,
             errorField: errorField
         });
     }
