@@ -143,14 +143,7 @@ export function sendEmail(data) {
       'Last Name: ' + data['Last Name'] + '<br>' + 
       'Mail Address: ' + data['Mail Address'] + '<br>' + 
       'Phone Number: ' + data['Phone Number']
-  };
-  
-  sgMail.client.defaultRequest.headers = {
-    "allow-http-request-headers-from-headers": "*",
-    "site-control-permitted-cross-domain-policies": "all",
-    "allow-access-from-domain": "*",
-    "allow-access-from-secure": "false"
-}
+  }; 
   
   sgMail.send(msg);
 }
